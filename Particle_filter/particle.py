@@ -159,7 +159,7 @@ class ParticleFilter:
             closest_landmark = findClosestLandmark(landarkList, obs)
             
             # Calculate observation probability for the closest landmark
-            observation_probability = findObservationProbability(closest_landmark, obs, sigmaX, sigmaY)
+            observation_probability = findObservationProbability(closest_landmark, obs, self.x, self.y)
             
             # Update particle weight based on observation probability
             particle.weight *= observation_probability
