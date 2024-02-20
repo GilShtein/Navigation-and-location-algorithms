@@ -140,9 +140,22 @@ class ParticleFilter:
         
     def UpdateWeight(self, observations):
         
+        particle = self.particles[i]
+        # Initialize weight to 1
+        particle.weight = 1.0
         
-        for i in range(self.number_of_particles):
-           #todo: Write code:
+        # Map observations to map coordinates for the particle
+        mapped_observations = mapObservationsToMapCordinatesList(observations, particle)
+        
+        # Iterate over each mapped observation and find the closest landmark
+        for obs in mapped_observations:
+            closest_landmark = findClosestLandmark(landarkList, obs)
+            
+            # Calculate observation probability for the closest landmark
+            observation_probability = findObservationProbability(closest_landmark, obs, sigmaX, sigmaY)
+            
+            # Update particle weight based on observation probability
+            particle.weight *= observation_probability
             
     
     
@@ -170,8 +183,37 @@ class ParticleFilter:
     
     
     def Resample(self):
+         # Create an array to store the cumulative sum of weights
+        cumulative_weights = [0.0] * self.number_of_particles
+        cumulative_sum = 0.0
+    
+        # Calculate cumulative sum of weights
+        for i in range(self.number_of_particles):
+            cumulative_sum += self.particles[i].weight
+            cumulative_weights[i] = cumulative_sum
+    
+        # Generate random starting point
+        start_index = random.randint(0, self.number_of_particles - 1)
+        step_size = cumulative_sum / self.number_of_particles
+    
+        # Perform resampling
+        index = 0
+        new_particles = []
+        beta = 0.0
+    
+        for i in range(self.number_of_particles):
+            beta += random.uniform(0, step_size * 2)
         
-    #todo: writecode
+            while beta > cumulative_weights[index]:
+                beta -= cumulative_weights[index]
+                index = (index + 1) % self.number_of_particles
+        
+            # Add selected particle to new_particles
+            new_particles.append(self.particles[index])
+    
+        # Update particles with the resampled particles
+        self.particles = new_particles
+
        
         
         
