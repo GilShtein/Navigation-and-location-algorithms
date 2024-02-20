@@ -37,7 +37,7 @@ for res in result:
 
     
 
-a = os.listdir("data/observation")
+a = os.listdir("data/SensorDataFiles")
 a.sort()
 observation=[]
 for i in range(len(a)):
