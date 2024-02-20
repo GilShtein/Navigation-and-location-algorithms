@@ -53,7 +53,14 @@ def calculateDistance(landmark1, landmark2):
     
 def findClosestLandmark(map_landmarks, singleObs):
     
-   #todo: write code:
+    closest_landmark = None
+    min_distance = float('inf')  # Initialize with a large value
+    
+    for landmark in map_landmarks:
+        distance = calculateDistance(landmark, singleObs)
+        if distance < min_distance:
+            min_distance = distance
+            closest_landmark = landmark
     return closest_landmark
     
     
