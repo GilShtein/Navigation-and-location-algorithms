@@ -41,7 +41,7 @@ a = os.listdir("data/SensorDataFiles")
 a.sort()
 observation=[]
 for i in range(len(a)):
-    fileName = 'data/observation/'+a[i]
+    fileName = 'data/SensorDataFiles/'+a[i]
     observationTmp = pd.read_csv(fileName, names = ['X cord','Y cord'], sep=' ')
     observation.append(observationTmp)
  
