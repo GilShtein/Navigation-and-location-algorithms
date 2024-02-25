@@ -1,9 +1,13 @@
 Extended Kalman Filter in 2-D for Navigation and location algorithms
 
 the blue line represent the actual location of the object.
+
 the green dots represent the data the sensors are giving us.
+
 the red line represent the kalman evaluation of the location of the object.
+
 the red circle represent the 'p' matrix , the cov matrix that shows the uncertainty around the solution.
+
 the black line represent a 'blind' navigation that's not using kalman evaluation. it updates the location based on the info we had in the last step.
 
 we can see that As time passes 'blind' navigation drifts further and further away from the real result.
