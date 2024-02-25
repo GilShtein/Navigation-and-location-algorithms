@@ -4,7 +4,7 @@ the blue line represent the actual location of the object.
 
 the green dots represent the data the sensors are giving us.
 
-the red line represent the kalman evaluation of the location of the object.
+the$${\color{red}Red}$$ red line represent the kalman evaluation of the location of the object.
 
 the red circle represent the 'p' matrix , the cov matrix that shows the uncertainty around the solution.
 
